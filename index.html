@@ -13,13 +13,13 @@
             }
   
   			//Android
-  			if (window.FTAndroid != undefined) {
+  			if (window.FTKAndroidInterface != undefined) {
 
           var inputValue = document.getElementById("name").value
 
           if (inputValue.length > 0) {
 
-            window.FTAndroid.getOneContact(inputValue);
+            window.FTKAndroidInterface.getOneContact(inputValue);
           } 
           else {
             alert("Please enter the Name or Number.")
@@ -51,8 +51,8 @@
             }
   
         //Android
-        if (window.FTAndroid != undefined) {
-            window.FTAndroid.getContacts();
+        if (window.FTKAndroidInterface != undefined) {
+            window.FTKAndroidInterface.getContacts();
             }
         }
 
@@ -81,8 +81,8 @@
             }
   
   			//Android
-  			if (window.FTAndroid != undefined) {
-        		window.FTAndroid.scanQRCode();
+  			if (window.FTKAndroidInterface != undefined) {
+        		window.FTKAndroidInterface.scanQRCode();
             }
         }
 
@@ -94,8 +94,8 @@
             }
   
         //Android
-        if (window.FTAndroid != undefined) {
-            window.FTAndroid.selectQRCodeFromPhotos();
+        if (window.FTKAndroidInterface != undefined) {
+            window.FTKAndroidInterface.selectQRCodeFromPhotos();
             }
         }
 
@@ -114,8 +114,8 @@
             }
   
         //Android
-        if (window.FTAndroid != undefined) {
-            window.FTAndroid.takePhoto();
+        if (window.FTKAndroidInterface != undefined) {
+            window.FTKAndroidInterface.takePhoto();
             }
         }
         
@@ -134,8 +134,8 @@
             }
   
         //Android
-        if (window.FTAndroid != undefined) {
-            window.FTAndroid.checkPermissions();
+        if (window.FTKAndroidInterface != undefined) {
+            window.FTKAndroidInterface.checkPermissions();
             }
         }
         
@@ -154,8 +154,8 @@
             }
   
   			//Android
-  			if (window.FTAndroid != undefined) {
-        		window.FTAndroid.dismissPopup();
+  			if (window.FTKAndroidInterface != undefined) {
+        		window.FTKAndroidInterface.dismissPopup();
             }
         }
 
