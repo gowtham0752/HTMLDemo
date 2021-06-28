@@ -1,0 +1,209 @@
+<html>
+    <head>
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+	<script>
+
+
+     // Single Contact	
+      function getSingleContactFromNativeCode() {  
+  			//iOS
+  			if (window.webkit != undefined) {
+        		window.webkit.messageHandlers.getContacts.postMessage({});
+            }
+  
+  			//Android
+  			if (window.FTAndroid != undefined) {
+
+          var inputValue = document.getElementById("name").value
+
+          if (inputValue.length > 0) {
+
+            window.FTAndroid.getOneContact(inputValue);
+          } 
+          else {
+            alert("Please enter the Name or Number.")
+          }
+            }
+        }
+
+        // Callback Single Contact
+        function callbackOneContact(obj) {
+          var result = obj.contact
+          if(result.includes("Contact Not")) {
+          alert(result)
+          }
+          else {
+          var fields = result.split(',');
+          var name = fields[0];
+          var number = fields[1];
+          alert( "Name : " +name + "\n" + "Number : " + number)
+          }
+
+       // setTitle(obj.contact);
+        }
+
+        // All Contacts
+        function getContactsFromNativeCode() {  
+        //iOS
+        if (window.webkit != undefined) {
+            window.webkit.messageHandlers.getContacts.postMessage({});
+            }
+  
+        //Android
+        if (window.FTAndroid != undefined) {
+            window.FTAndroid.getContacts();
+            }
+        }
+
+        // Callback All Contacts
+        function callbackContacts(obj) {
+
+          alert(obj.contacts)
+
+      // if (obj.cached) {
+      //  setTitle(cachedContacts.length);
+      // } else {
+      //  setTitle('NOT CACHED');
+      // }
+        }
+
+        // Callback Contacts Count
+        function contactCount(count) {
+			setTitle(count + ' Contact(s)')
+        }
+
+        //  Qr code
+        function scanQRCode() {  
+  			//iOS
+  			if (window.webkit != undefined) {
+        		window.webkit.messageHandlers.scanQRCode.postMessage({});
+            }
+  
+  			//Android
+  			if (window.FTAndroid != undefined) {
+        		window.FTAndroid.scanQRCode();
+            }
+        }
+
+        // scanning QR code from camera
+        function selectQRCodeFromPhotos() {  
+        //iOS
+        if (window.webkit != undefined) {
+            window.webkit.messageHandlers.scanQRCode.postMessage({});
+            }
+  
+        //Android
+        if (window.FTAndroid != undefined) {
+            window.FTAndroid.selectQRCodeFromPhotos();
+            }
+        }
+
+        // Callback Qr code
+        function callbackQRCode(obj) {
+
+          alert(obj.code)
+       // setTitle(obj.code);
+        }
+
+        // take photo from camera
+        function takePhotoFromCamera() {  
+        //iOS
+        if (window.webkit != undefined) {
+            window.webkit.messageHandlers.scanQRCode.postMessage({});
+            }
+  
+        //Android
+        if (window.FTAndroid != undefined) {
+            window.FTAndroid.takePhoto();
+            }
+        }
+        
+        // Callback takePhoto
+        function callbackPhoto(obj) {
+
+        alert(obj.photo)
+       // setTitle(obj.photo);
+        }
+        
+        // take photo from camera
+        function checkPermissionStatus() {  
+        //iOS
+        if (window.webkit != undefined) {
+            window.webkit.messageHandlers.checkPermissions.postMessage({});
+            }
+  
+        //Android
+        if (window.FTAndroid != undefined) {
+            window.FTAndroid.checkPermissions();
+            }
+        }
+        
+        // Callback Permission
+        function callbackPermissions(obj) {
+
+        alert(obj.permission)
+       // setTitle(obj.photo);
+        }
+
+        
+        function dismissPopup() {  
+  			//iOS
+  			if (window.webkit != undefined) {
+        		window.webkit.messageHandlers.dismissPopup.postMessage({});
+            }
+  
+  			//Android
+  			if (window.FTAndroid != undefined) {
+        		window.FTAndroid.dismissPopup();
+            }
+        }
+
+        function titleToColor(color) {
+          var title = document.getElementById("title");
+            title.style.color = color;
+        }
+		
+    		function setTitle(text) {
+    			var title = document.getElementById("title");
+    			title.innerHTML = text;
+    		}
+
+    </script>
+	<body>
+	
+	<center>
+	
+    	<h1 id="title">Zelle Sdk</h1>
+
+		    <div>
+		    <label for="name">Name:</label>
+		    <input type="value" id="name" placeholder="Enter name" name="name">
+  		  </div>
+
+        <br><br>
+
+    		<button type="button" onclick="getSingleContactFromNativeCode()">Get Contact</button>
+    		<br><br>
+
+        <button type="button" onclick="getContactsFromNativeCode()">Get Contacts</button>
+        <br><br>
+		
+        <button type="button" onclick="scanQRCode()">Scan QR Code</button>
+        <br><br>
+
+        <button type="button" onclick="selectQRCodeFromPhotos()">Scan QR Code From Photos</button>
+        <br><br>
+
+        <button type="button" onclick="takePhotoFromCamera()">Take a Photo</button>
+        <br><br>
+        
+        <button type="button" onclick="checkPermissionStatus()">Check Permission</button>
+        <br><br>
+
+		<button type="button" onclick="dismissPopup()">Dismiss Popup</button>
+    	<script> titleToColor('Blue') </script>
+    	
+    	</center>
+	</body>
+</html>
